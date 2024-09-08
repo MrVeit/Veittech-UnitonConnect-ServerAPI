@@ -31,6 +31,6 @@ help:
         @echo " make build - Build the Docker image"
         @echo " make run - Start the Docker container"
         @echo " make stop - Stopping the Docker container."
-        @echo " make restart - Restart the Docker container" @echo " make restart - Restart the Docker container"
+        @echo " make restart - Restart the Docker container"
         @echo " make logs - View the Docker container logs"
         @echo " make clean - Deleting the Docker image"
