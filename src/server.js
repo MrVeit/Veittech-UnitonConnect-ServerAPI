@@ -15,7 +15,7 @@ function getImageNameFromUrl(url)
     return url.substring(url.lastIndexOf('/') + 1);
 }
 
-app.get('/api/get-nft-image', async (request, result) =>
+app.get('/get-nft-image', async (request, result) =>
 {
     const { url } = request.query;
 
