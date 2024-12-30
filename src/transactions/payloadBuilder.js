@@ -1,13 +1,15 @@
 const logger = require('../utils/logger');
+const coin = require('../utils/coinConverter');
 
-const { beginCell, Address, toNano } = require('@ton/core');
+const { beginCell, Address } = require('@ton/core');
 
 function generateJettonTransfer(amount,
     recipientJettonAddress, senderTonAddress, gasGee)
 {
     try
     {
-        const jettonAmount = Math.floor(amount * 1e6);
+        const jettonAmount = coin.toUSDtNanoton(amount);
+        const gasFeeAmount = coin.toNanoton(gasGee);
         
         const baseQueryId = BigInt(Date.now()) * BigInt(1000);
         const queryId = baseQueryId - (baseQueryId % BigInt(1000));
@@ -22,7 +24,7 @@ function generateJettonTransfer(amount,
             .storeAddress(Address.parse(recipientJettonAddress))
             .storeAddress(Address.parse(senderTonAddress))
             .storeBit(0)
-            .storeCoins(toNano(gasGee))
+            .storeCoins(gasFeeAmount)
             .storeBit(0)
             .endCell();
 
@@ -46,11 +48,6 @@ function generateJettonTransfer(amount,
             message: errorMessage
         };
     }
-}
-
-function generateNftTransfer()
-{
-
 }
 
 module.exports =
