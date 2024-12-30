@@ -45,9 +45,4 @@ router.post('/assets/jetton/payload', (request, result) =>
     });
 });
 
-router.post('/assets/nft/payload', (request, result) =>
-{
-
-});
-
 module.exports = router;

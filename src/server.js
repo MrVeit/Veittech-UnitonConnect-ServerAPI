@@ -1,5 +1,5 @@
 const logger = require('./utils/logger');
-const transactionRoutes = require('./routes/transactionHandleRoutes');
+const assetsRoutes = require('./routes/walletAsseetsRoutes');
 const extensionsRoutes = require('./routes/extensionRoutes');
 
 const bodyParser = require('body-parser');
@@ -14,7 +14,7 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 app.use('/api/uniton-connect/v1', extensionsRoutes);
-app.use('/api/uniton-connect/v1', transactionRoutes);
+app.use('/api/uniton-connect/v1', assetsRoutes);
 
 app.listen(port, () =>
 {
