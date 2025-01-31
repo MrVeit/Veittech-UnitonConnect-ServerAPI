@@ -1,5 +1,33 @@
 const time = require('./timer');
 
+function message(text)
+{
+    timestamp = time.getCurrentTimestamp();
+
+    console.error(`[${timestamp}] \x1b[32m[DEBUG] ${text}\x1b[0m`);
+}
+
+function warning(text)
+{
+    timestamp = time.getCurrentTimestamp();
+
+    console.error(`[${timestamp}] \x1b[33m[WARN] ${text}\x1b[0m`);
+}
+
+function error(text)
+{
+    timestamp = time.getCurrentTimestamp();
+
+    console.error(`[${timestamp}] \x1b[31m[ERROR] ${text}\x1b[0m`);
+}
+
+function detailedError(text, error)
+{
+    timestamp = time.getCurrentTimestamp();
+
+    console.error(`[${timestamp}] \x1b[31m[ERROR] ${text}\x1b[0m`, error);
+}
+
 function serverError(result, errorText, message)
 {
     error(time.getCurrentTimestamp(), `${message}`, errorText);
@@ -11,33 +39,12 @@ function serverError(result, errorText, message)
     })
 }
 
-function message(text)
-{
-    var timestamp = time.getCurrentTimestamp();
-
-    console.log(`[${timestamp}] ${text}`);
-}
-
-function warning(text)
-{
-    var timestamp = time.getCurrentTimestamp();
-
-    console.warn(`[${timestamp}] ${text}`);
-}
-
-function error(text)
-{
-    var timestamp = time.getCurrentTimestamp();
-
-    console.error(`[${timestamp}] ${text}`);
-}
-
 module.exports =
 {
     serverError,
+    detailedError,
 
     message,
     warning,
-    error,
     error,
 };

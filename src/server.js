@@ -4,12 +4,14 @@ const extensionsRoutes = require('./routes/extensionRoutes');
 
 const bodyParser = require('body-parser');
 const express = require('express');
+const cors = require('cors');
 
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT;
 
+// app.use(cors()); // local test only
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
@@ -25,5 +27,5 @@ app.listen(port, () =>
         return;
     }
 
-    logger.message(`Uniton Connect API listening at ${port}`); 
+    logger.message(`Uniton Connect Backend listening at ${port}`); 
 });

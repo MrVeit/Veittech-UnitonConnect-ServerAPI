@@ -1,14 +1,30 @@
-const logger = require('../utils/logger');
-const coin = require('../utils/coinConverter');
+const logger = require('./logger');
+const coin = require('./coinConverter');
 
 const { beginCell, Address } = require('@ton/core');
 
-function generateJettonTransfer(amount,
-    recipientJettonAddress, senderTonAddress, gasGee)
+function generateJettonTransfer(amount, recipient, 
+    sender, gasGee, jettonType)
 {
     try
     {
-        const jettonAmount = coin.toUSDtNanoton(amount);
+        var jettonAmount = 0;
+
+        if (jettonType === "USDT")
+        {
+            jettonAmount = coin.toUSDtNanoton(amount);
+
+            logger.message(`Detected USDT, value converted`+
+                `custom value: ${jettonAmount}`);
+        }
+        else
+        {
+            jettonAmount = coin.toNanoton(amount);
+
+            logger.message(`Transfer value converted to `+
+                `base jetton nano format: ${jettonAmount}`);
+        }
+
         const gasFeeAmount = coin.toNanoton(gasGee);
         
         const baseQueryId = BigInt(Date.now()) * BigInt(1000);
@@ -21,8 +37,8 @@ function generateJettonTransfer(amount,
             .storeUint(0xf8a7ea5, 32)
             .storeUint(queryId, 64)
             .storeCoins(jettonAmount)
-            .storeAddress(Address.parse(recipientJettonAddress))
-            .storeAddress(Address.parse(senderTonAddress))
+            .storeAddress(Address.parse(recipient))
+            .storeAddress(Address.parse(sender))
             .storeBit(0)
             .storeCoins(gasFeeAmount)
             .storeBit(0)
