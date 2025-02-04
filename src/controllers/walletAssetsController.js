@@ -3,13 +3,13 @@ const { generateJettonTransactionPayload,
 
 exports.createJettonTransactionPayload = async (request, result) =>
 {
-    const { amount, recipientAddress, 
-        senderAddress, gasFee, jettonType } = request.body;
+    const { amount, recipientAddress, senderAddress, 
+        gasFee, jettonType, message } = request.body;
 
     try
     {
         const generatedPayloadProcess = await generateJettonTransactionPayload(
-            amount, recipientAddress, senderAddress, gasFee, jettonType);
+            amount, recipientAddress, senderAddress, gasFee, jettonType, message);
 
         return result.status(200).json(
         {
@@ -29,11 +29,17 @@ exports.createJettonTransactionPayload = async (request, result) =>
 
 exports.createNftTransactionPayload = async (request, result) =>
 {
+    const { recipientAddress, senderAddress } = request.body;
+
     try
     {
+        const generatedPayloadProcess = await generateNftTransactionPayload(
+            recipientAddress, senderAddress);
+
         return result.status(200).json(
         {
-            isSuccess: true
+            isSuccess: true,
+            payload: generatedPayloadProcess.payload
         });
     }
     catch (error)
