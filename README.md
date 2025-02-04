@@ -9,7 +9,7 @@ As of **CURRENT VERSION** of the library, the following functionality `is availa
 
 - [x] Load NFT pictures/token icons **without CORS** issues,
 - [x] Generate payload for **sending jetton** transactions,
-- [ ] Generate payload for **sending NFT** items,
+- [x] Generate payload for **sending NFT** items,
 - [ ] Read the balance of **specific jetton** on a connected wallet,
 - [ ] Read the availability of **NFT collections** on a connected wallet,
 - [ ] Load last successful transactions history **with Toncoin**,
