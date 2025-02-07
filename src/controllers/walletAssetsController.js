@@ -1,5 +1,4 @@
-const { generateJettonTransactionPayload,
-    generateNftTransactionPayload } = require('../services/walletAssetsService');
+const walletAssetsService = require('../services/walletAssetsService');
 
 exports.createJettonTransactionPayload = async (request, result) =>
 {
@@ -8,7 +7,7 @@ exports.createJettonTransactionPayload = async (request, result) =>
 
     try
     {
-        const generatedPayloadProcess = await generateJettonTransactionPayload(
+        const generatedPayloadProcess = await walletAssetsService.generateJettonTransactionPayload(
             amount, recipientAddress, senderAddress, gasFee, jettonType, message);
 
         return result.status(200).json(
@@ -33,7 +32,7 @@ exports.createNftTransactionPayload = async (request, result) =>
 
     try
     {
-        const generatedPayloadProcess = await generateNftTransactionPayload(
+        const generatedPayloadProcess = await walletAssetsService.generateNftTransactionPayload(
             recipientAddress, senderAddress);
 
         return result.status(200).json(
