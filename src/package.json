@@ -1,23 +1,22 @@
 {
-  "name": "veittech-unitonconnect-serverapi",
-  "version": "1.0.0",
+  "name": "uniton-connect_backend",
+  "version": "0.5.0",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "veittech",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@ton/core": "^0.59.0",
-    "axios": "^1.7.4",
+    "axios": "^1.7.9",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.2",
-    "sharp": "^0.33.4",
-    "tonweb": "^0.0.66"
+    "sharp": "^0.33.4"
   }
 }

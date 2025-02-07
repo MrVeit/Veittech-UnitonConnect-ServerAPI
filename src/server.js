@@ -1,6 +1,8 @@
 const logger = require('./utils/logger');
-const assetsRoutes = require('./routes/walletAsseetsRoutes');
 const extensionsRoutes = require('./routes/extensionRoutes');
+const assetsRoutes = require('./routes/walletAsseetsRoutes');
+const assetsTransferRoutes = require('./routes/assetsTransferRoutes');
+const walletAccountRoutes = require('./routes/walletAccountRoutes');
 
 const bodyParser = require('body-parser');
 const express = require('express');
@@ -17,6 +19,8 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 app.use('/api/uniton-connect/v1', extensionsRoutes);
 app.use('/api/uniton-connect/v1', assetsRoutes);
+app.use('/api/uniton-connect/v1', walletAccountRoutes);
+app.use('/api/uniton-connect/v1', assetsTransferRoutes);
 
 app.listen(port, () =>
 {
