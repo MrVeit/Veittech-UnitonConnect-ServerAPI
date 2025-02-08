@@ -12,7 +12,7 @@ As of **CURRENT VERSION** of the library, the following functionality `is availa
 - [x] Generate payload for **sending NFT** items,
 - [x] Read the address of **jetton wallet** on a connected wallet,
 - [x] Read the balance of **specific jetton** on a connected wallet,
-- [x] Read the availability of **NFT collections** on a connected wallet,
+- [ ] Read **existing NFT collections** on a connected wallet,
 - [ ] Load last successful transactions history **with Toncoin**,
 - [x] Load last successful transactions **with Jettons**,
 - [ ] Load last successful transactions **with NFT Collections**,
