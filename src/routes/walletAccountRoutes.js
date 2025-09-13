@@ -1,4 +1,4 @@
-const accountController= require('../controllers/walletAccountController');
+const accountController = require('../controllers/walletAccountController');
 
 const express = require('express');
 const router = express.Router();
@@ -12,5 +12,6 @@ router.get(`/account/:accountAddress/assets/nft/:collectionAddress/`+
     `limit/:limit/offset/:offset`, accountController.getTargetNftCollection);
 router.get(`/account/:accountAddress/assets/nft/limit/:limit/offset/:offset`,
     accountController.getAllNftCollections);
+router.put(`/account/sign-data/payload/verify`, accountController.verifySignedPayload);
 
 module.exports = router;

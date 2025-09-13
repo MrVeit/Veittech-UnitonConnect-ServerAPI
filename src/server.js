@@ -26,9 +26,9 @@ app.listen(port, () =>
 {
     if (!port)
     {
-        logger.error(`Failed to read port for launch server`);
+        logger.error(`Failed to read port for launch Uniton Connect Backend`);
 
-        return;
+        process.exit(1);
     }
 
     logger.message(`Uniton Connect Backend listening at ${port}`); 
