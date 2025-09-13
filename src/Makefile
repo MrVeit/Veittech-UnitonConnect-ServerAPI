@@ -8,7 +8,7 @@ APP_NAME = uniton-connect_api-server
 DOCKER_IMAGE = $(APP_NAME):$(VERSION)
 DOCKER_CONTAINER = $(APP_NAME)_container
 
-VERSION = 0.5.0
+VERSION = 0.5.5
 
 .PHONY: help build run run-detached stop restart clear logs logs-realtime
 
@@ -21,7 +21,7 @@ run: build
 stop:
 	docker stop $(DOCKER_CONTAINER) || true
 
-restart: clean run
+restart: clear run
 
 clear: stop
 	docker rm $(DOCKER_CONTAINER) || true
