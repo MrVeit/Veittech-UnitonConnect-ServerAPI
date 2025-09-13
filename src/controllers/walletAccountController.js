@@ -1,6 +1,8 @@
 const tonCenterBridge = require('../services/tonCenterBridgeService');
 const tonApiBridge = require('../services/tonApiBridgeService');
 
+const accountService = require('../services/walletAccountService');
+
 exports.getJettonBalance = async (request, result) =>
 {
     const { accountAddress, masterAddress } = request.params;
@@ -85,6 +87,33 @@ exports.getTargetNftCollection = async (request, result) =>
         return result.status(200).json(
         {
             nftItems: loadedTargetCollectionProcess.targetNftCollection.nft_items
+        });
+    }
+    catch (error)
+    {
+        return result.status(400).json(
+        {
+            isSuccess: false,
+            message: error.message
+        });
+    }
+}
+
+exports.verifySignedPayload = async (request, result) =>
+{
+    const { signature, address, timestamp, domain,
+        messagePayload, walletPublicKey, walletStateInit } = request.body;
+
+    try
+    {
+        const isVerified = await accountService.verifySignedData(
+            signature, address, timestamp, domain, messagePayload,
+            walletPublicKey, walletStateInit);
+
+        return result.status(200).json(
+        {
+            isVerified,
+            signedMessage: messagePayload
         });
     }
     catch (error)
