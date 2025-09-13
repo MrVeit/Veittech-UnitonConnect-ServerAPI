@@ -19,3 +19,5 @@ As of **CURRENT VERSION** of the library, the following functionality `is availa
 - [ ] Load the current **real-time price** of toncoin/jetton,
 - [ ] Burn nft **items from collections** on the connected wallet,
 - [ ] Swap tokens **to toncoin and reverse** via Dedust/Stonfi platform
+- [x] Verification of a signed message with payload from a wallet to identify a real connection
+- [ ] Validating a connected wallet to the application via `ton_proof`
