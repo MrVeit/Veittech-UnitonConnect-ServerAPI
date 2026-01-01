@@ -14,12 +14,12 @@
     "@ton/core": "^0.59.0",
     "@ton/crypto": "^3.3.0",
     "axios": "^1.7.9",
-    "body-parser": "^1.20.3",
+    "body-parser": "^1.20.4",
     "buffer": "^6.0.3",
     "cors": "^2.8.5",
     "crc-32": "^1.2.2",
     "dotenv": "^16.4.5",
-    "express": "^4.21.2",
+    "express": "^4.22.1",
     "sharp": "^0.33.4",
     "tweetnacl": "^1.0.3"
   }
